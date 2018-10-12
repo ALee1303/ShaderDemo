@@ -32,7 +32,7 @@
 			void surf(Input IN, inout SurfaceOutput o) {
 				o.Albedo = _myColour.rgb;	  // base color
 				o.Emission = _myEmission.rgb; // glow color
-				o.Normal = _myNormal.rgb;
+				o.Normal = _myNormal;
 			}
 
 			/* properties of SurfaceOutput
