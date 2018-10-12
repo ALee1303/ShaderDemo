@@ -20,24 +20,26 @@
 					
 			// make Properties available to Shader Function by declaring matching variable
 			fixed4 _myColour; // [ShaderDataType] [NameOfPropertiesYouWantAvailable]
+			fixed4 _myEmission;
 
 			/// The Shader Function:
 			/// param@Input IN = Input strcuture declared
 			/// param@innout SurfaceOutput o = specifies output data expected. Changes depending on lighting mode used(ex:Lambert=SurfaceOutput)
 
 			void surf(Input IN, inout SurfaceOutput o) {
-				o.Albedo = _myColour.rgb; // diffuse color. Type=fixed3
+				o.Albedo = _myColour.rgb;	  // base color
+				o.Emission = _myEmission.rgb; // glow color
 			}
 
 			/* properties of SurfaceOutput
 			struct SurfaceOutput {
-				fixed3 Albedo;   // diffuse color
+				fixed3 Albedo;   // diffuse, base, color
 				fixed3 Normal;   // tangent space normal, if written
-				fixed3 Emission; // Color with no depth, like a light
+				fixed3 Emission; // Color with no depth and glow, like a light
 				half Specular;   // Specular power in 0..1 range
 				fixed Gloss;     // specular intensity
 				fixed Alpha;     // alpha for transparencies
-				};
+			};
 			*/
 
 		ENDCG     // Shader code End
