@@ -2,8 +2,9 @@
 
 	Properties{ // Declare input variable to use on your shader processing. Shows up in material inspector
 		// [Identifier]("[InspectorDisplay]", [Type]) = [InitialValue]
-		_myColour("Example Colour", Color) = (1,1,1,1) 
+		_myColour("Example Color", Color) = (1,1,1,1) 
 		_myEmission("Example Emission", Color) = (1,1,1,1)
+		_myNormal("Example Normal", Color) = (1,1,1,1)
 	}
 
 	SubShader{ // Where CG/HSLS code goes
@@ -19,8 +20,10 @@
 			};
 					
 			// make Properties available to Shader Function by declaring matching variable
-			fixed4 _myColour; // [ShaderDataType] [NameOfPropertiesYouWantAvailable]
+			// [ShaderDataType] [NameOfPropertiesYouWantAvailable]
+			fixed4 _myColour;
 			fixed4 _myEmission;
+			fixed4 _myNormal;
 
 			/// The Shader Function:
 			/// param@Input IN = Input strcuture declared
@@ -29,6 +32,7 @@
 			void surf(Input IN, inout SurfaceOutput o) {
 				o.Albedo = _myColour.rgb;	  // base color
 				o.Emission = _myEmission.rgb; // glow color
+				o.Normal = _myNormal.rgb;
 			}
 
 			/* properties of SurfaceOutput
