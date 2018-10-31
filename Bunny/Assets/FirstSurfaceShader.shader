@@ -48,6 +48,7 @@
 
 		ENDCG     // Shader code End
 
+		//Not WORKING
 		//FallBack "Diffuse" // if graphics card is incompatible
 	}
 }
